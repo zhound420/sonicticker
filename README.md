@@ -19,9 +19,19 @@ frontend/          # React + TypeScript + Vite client
 └─ src/visualizations
 ```
 
+### One-Command Bootstrap
+
+Prerequisites: Rust toolchain (1.76+ recommended), Node 18+, and ALSA dev headers on Linux (needed by `tunes`/`cpal`).
+
+```bash
+bash scripts/bootstrap.sh
+```
+
+The script installs backend + frontend dependencies, builds the Rust binary, and produces the Vite production bundle.
+
 ### Backend
 
-Prerequisites: Rust toolchain (1.76+ recommended), ALSA dev headers on Linux (for `tunes`/`cpal`).
+To run the Axum server manually:
 
 ```bash
 cd oscillator
