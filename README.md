@@ -19,15 +19,36 @@ frontend/          # React + TypeScript + Vite client
 └─ src/visualizations
 ```
 
-### One-Command Bootstrap
+### Quick Start (One Command)
 
-Prerequisites: Rust toolchain (1.76+ recommended), Node 18+, and ALSA dev headers on Linux (needed by `tunes`/`cpal`).
+Prerequisites:
+- Rust toolchain ≥ 1.76 (install via [rustup](https://rustup.rs))
+- Node.js ≥ 18
+- Linux users: `sudo apt install libasound2-dev` (for `cpal`/ALSA)
 
 ```bash
+git clone https://github.com/zhound420/sonicticker.git
+cd sonicticker
 bash scripts/bootstrap.sh
 ```
 
-The script installs backend + frontend dependencies, builds the Rust binary, and produces the Vite production bundle.
+`bootstrap.sh` installs all dependencies, builds the Rust backend, and compiles the Vite frontend. When it finishes you’ll have:
+- `oscillator/target/debug/oscillator` – Axum + tunes server
+- `frontend/dist/` – production-ready SPA bundle
+
+### Run Locally
+
+In separate terminals:
+
+```bash
+# Terminal A – Backend (ws + REST on port 8080 by default)
+cd oscillator
+cargo run
+
+# Terminal B – Frontend (Vite dev server with HMR)
+cd frontend
+npm run dev   # http://localhost:5173
+```
 
 ### Backend
 
